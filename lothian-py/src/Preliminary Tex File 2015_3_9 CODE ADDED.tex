@@ -160,7 +160,7 @@ These are the fiscal costs associated with this project, not including man hours
 \textbf{CF14JT1K00 Resistor:} \hfill\$0.10 (3X)\\
 \textbf{PR01000103003JR500 Resistor:} \hfill\$0.37 (3X)\\
 \textbf{CF14JT200K Resistor:} \hfill \$0.10\\
-\textbf{Electrodes:} \hfill\$0.00 Free\\
+\textbf{Electrodes:} Provided by Dr. Karplus \hfill\$0.00\\
 \rule{\textwidth}{1pt}
 \textbf{Total Cost:} \hfill Including Shipping/Markup: \$59.61\\
 \pagebreak
@@ -202,10 +202,16 @@ plt.plot(time, vol) #use matplotlib to plot data
 plt.show() #open window with plot
 txt.close() #close the file safely
 \end{lstlisting}
+\pagebreak
+\par The above code is our current graphing module that has successfully converted the example data provided by Dr. Karplus \cite{karptalk} and generated a waveform (below). In the next two days we will implement the bandpass and notch filters from scipy. Immediately afterwards we plan on completing the Diagnostic Module and a GUI.
 
-\par The above code is our current graphing module that has succesfully converted the example data provided by Dr. Karplus \cite{karptalk} and generated a waveform. In the next two days we will implement the bandpass and notch filters from scipy. Immediately afterwards we plan on completing the Diagnostic Module and a GUI.
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=\textwidth]{matplotlib1}
+\end{figure}
 
-\begin{thebibliography}{12}
+\pagebreak
+\begin{thebibliography}{14}
 
 \bibitem{ecgpos}
 "Electrocardiography Devices." Electrocardiography Devices. N.p., n.d. Web. 24 Feb. 2015. \\ \url{http://rtboardreview.com/public/equipment_room/ats_ecg.htm}
