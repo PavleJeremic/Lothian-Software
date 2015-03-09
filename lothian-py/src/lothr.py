@@ -1,12 +1,12 @@
 '''
 Created on Mar 6, 2015
 
-@author: Henry Hinton, Pavle Jeremic, Yoshi Hirata
+@author: Henry Hinton, Pavle Jeremic, Eduardo Hirata
 '''
 #!/usr/bin/python
 import Tkinter
 from Tkinter import Tk, Frame, BOTH
-import serial
+
 
 
 class GUI(Frame):
@@ -39,7 +39,7 @@ def main():
 
 
 if __name__ == '__main__':
-    top=tk.TK()
+    top=root();
     graph= GUI(Frame, )
 
     print("Hey there, sweet cheeks.")
