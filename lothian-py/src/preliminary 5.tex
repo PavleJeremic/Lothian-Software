@@ -48,7 +48,7 @@
 \par For this design we are looking to record the electrical signal of the heartbeat's QRS complex. The QRS complex is the combination of the three main graphical deflections observed on the electrocardiogram produced after the P and T wave. The P wave is the first short upward spike recorded in an ECG, and indicates the contraction of atria that pump blood into the ventricles. The QRS represents the ventricular depolarization and contraction, and it is graphed as a downward deflection, Q; a high upward deflection, spike R, and another downward S wave. Physiologically normal interval durations within the PQRST process happen quickly, in the order of tens of milliseconds. We expect a normal QRS interval to last around 60ms. Overall, we are looking for various contractions that occur in the heart and produce an electrical signal around 0.5mV. \cite{karptalk}
 
 \par 
-The baseline of the electrocardiogram is measured by the $\text{V}_{\text{ref}}$ terminal of the instrumentation amplifier. Due to variability in the baseline as a direct result of autonomous muscle contractions, however, we must process the baseline with a bandpass filter. Doing this in software will require post-processing (filtering the data after it has been collected), which we are currently achieving using the scipython bandpass filter module and the scipython notch filter. A bandpass filter is designed to remove any frequencies above frequency B (f-_{B}) and below frequency A (f-_{b}) where f-_{A} < f-_{B}. For the EKG, a bandwidth of ~2.2 Hz, from 0.8 to 3.0 Hz is optimal as those parameters represent the normal range of the human heartbeat frequency (48 bpm to 180 bpm respectively), though we expect the signal to mostly consist of the 0.85 to 1.15 Hz bandwidth. The notch filter is an inversion of the bandpass filter in that it will filter out any frequencies between f-_{A} and f-_{B}. In the EKG this filter will be used to remove the ~ 60Hz noise produced by inductive capacitance of the surrounding electronics. Both filters will be imported from the ScipPython module \cite{SciPython}    
+The baseline of the electrocardiogram is measured by the $\text{V}_{\text{ref}}$ terminal of the instrumentation amplifier. Due to variability in the baseline as a direct result of autonomous muscle contractions, however, we must process the baseline with a bandpass filter. Doing this in software will require post-processing (filtering the data after it has been collected), which we are currently achieving using the scipython bandpass filter module and the scipython notch filter. A bandpass filter is designed to remove any frequencies above frequency B $(f_B)$ and below frequency A $(f_A)$ where $f_A < f_B$. For the EKG, a bandwidth of $\approx$2.2 Hz from 0.8 to 3.0 Hz is optimal as those parameters represent the normal range of the human heartbeat frequency (48 bpm to 180 bpm respectively), though we expect the signal to mostly consist of the 0.85 to 1.15 Hz bandwidth. The notch filter is an inversion of the bandpass filter in that it will filter out any frequencies between $f_A$ and $f_B$. In the EKG this filter will be used to remove the 60Hz noise produced by inductive capacitance of the surrounding (mains-level) electronics. Both filters will be imported from the SciPython module \cite{SciPython}    
 
 The final data set will be fed into a graphing program, which will then output data to two modules, the Graphic User Interface (GUI) Module and the Diagnostic Reader Module (DRM). The DRM will also then output to the GUI. The GUI will be a highly simplified interface that will allow the user to change some of the parameters of the program to improve usability, possibly including bandpass filter parameter alterations and changing the DRM to better serve the needs of the user. 
 
@@ -61,9 +61,6 @@ Anything we may have encountered...
 				\item Sparkfun Redboard Arduino
 				\item INA122 Instrumentation Amplifier
 				\item LT1354 Operational Amplifier
-				\begin{itemize}
-				
-				\end{itemize}
 				\item DC Filter
 					\item C330C124KCR5TA Capacitor
 					\item MRS25000C8253FRP00 Resistor
@@ -71,7 +68,7 @@ Anything we may have encountered...
 				\item Wires
 				\item Software Modules
 					\item Registration Module
-						\item serial system in arduino
+						\item Serial system in Arduino
 					\item Pairing Module
 					\item Noise Filter
 						\item Bandpass Filter
@@ -94,13 +91,13 @@ Anything we may have encountered...
 \section{Block Diagram}
 \begin{figure}[htb!]
 \centering
-\includegraphics[width=\textwidth]{blocknet}
+\includegraphics[width=\textwidth]{blockdiagnew}
 \end{figure}
 \begin{itemize}[leftmargin=*]
 
 \item[] \textbf{Hardware Modules:}\\
 	Human: Only prerequisite is a beating heart (and consent).\\
-	Instrumentation Amplifier: Voltage fluctuations may be lower than the Arduino's resolution ($\geq$5mV), so we must use the amplifier to boost the signal to a level we can monitor. However since the signal will be approximately 0.5 mV, however the DC noise will be approximately 300 mV. \cite{karptalk} Therefore if any significant gain on the voltage in the instrumentation amplifier runs the risk of saturating the instrumentation amplifier. Therefore the primary purpose of the instrumentation amplifier will be to generate a differential signal, not to boost the voltage.\\
+	Instrumentation Amplifier: Voltage fluctuations may be lower than the Arduino's resolution ($\geq$5mV), so we must use the amplifier to boost the signal to a level we can monitor. Since the signal will be approximately 0.5 mV, however, the DC noise will be approximately 300 mV. \cite{karptalk} Therefore if any significant gain on the voltage in the instrumentation amplifier runs the risk of saturating the instrumentation amplifier. Therefore the primary purpose of the instrumentation amplifier will be to generate a differential signal, not to boost the voltage.\\
 	Arduino: Converts analog input to digital output for Laptop using a serial output.\\
 	Computer: Runs software/code and displays data. 
 	
@@ -132,7 +129,7 @@ We are not considering manufacturing costs for now (e.g. solder, access to testi
 \textbf{Total Cost:} \hfill Including Shipping/Markup: \$46.50\\
 \pagebreak
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{11}
 
 \bibitem{ecgpos}
 "Electrocardiography Devices." Electrocardiography Devices. N.p., n.d. Web. 24 Feb. 2015. \\ \url{http://rtboardreview.com/public/equipment_room/ats_ecg.htm}
@@ -158,7 +155,7 @@ Eric Jones and Travis Oliphant and Pearu Peterson and others. SciPy: Open source
 
 \bibitem{matplotlib}
 Hunter, J. D. Matplotlib: A 2D graphics enviroment.
-Computingin Science \& Engineering vol.9 #3 pg. 90-95
+Computing in Science \& Engineering vol.9 \#3 pg. 90-95
 publisher: IEEE Computer Society, 2007. \url{http://matplotlib.org/index.html}
 
 
