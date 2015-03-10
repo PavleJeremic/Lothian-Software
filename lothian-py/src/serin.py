@@ -9,25 +9,22 @@ import numpy
 import scipy
 import matplotlib.pyplot as plt
 
-time = []
-vol = []
-
 filename = argv[1]
+raw = []
+time, vdiff = [], []
+# print('Using file: ' + filename)
 
-txt = open(filename, 'r')
-print('Using file: ' + filename)
-for line in txt:
-    if line.startswith('#'):
-        continue
-    fields = map(float, line.split())
-    if len(fields) >= 2:
-        time.append(fields[0])
-        vol.append(fields[1])
-print("Using %d values" % len(time))
-
-for i in range (0, len(time)):
-    print("%.7f  %.7f" % (time[i], vol[i]))
-plt.plot(time, vol)
-
-plt.show()
-txt.close()
+with open(filename, 'r') as txt: #open file
+    for line in txt:
+        if line.startswith('#'): #skip commented lines in header
+            continue
+        raw.append(line.rstrip('\n')) #strip newline delimiter
+print("Using %d points." % len(raw)) #verify data
+for index, x in enumerate(raw):
+    raws = x.split('\t') #split raw lines into time & vdif values
+    print("%d, %s, %s" % (index, raws[0], raws[1])) #print values to console
+    time.append(float(raws[0]))
+    vdiff.append(float(raws[1]))
+    
+plt.plot(time, vdiff) #plot points
+plt.show() #display points
