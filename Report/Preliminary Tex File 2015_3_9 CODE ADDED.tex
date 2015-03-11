@@ -6,7 +6,7 @@
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps -- pdf in pdflatex		
 \usepackage{amssymb}
-%\graphicspath{ {images/} }
+\graphicspath{ {images/} }
 
 \usepackage{mathtools}
 \usepackage{enumitem}
@@ -37,7 +37,7 @@
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=4
 }
 
 
@@ -160,50 +160,46 @@ These are the fiscal costs associated with this project, not including man hours
 \textbf{CF14JT1K00 Resistor:} \hfill\$0.10 (3X)\\
 \textbf{PR01000103003JR500 Resistor:} \hfill\$0.37 (3X)\\
 \textbf{CF14JT200K Resistor:} \hfill \$0.10\\
-\textbf{Electrodes:} Provided by Dr. Karplus \hfill\$0.00\\
+\textbf{Electrodes:} Provided by Dr. Karplus \hfill \$0.00\\
 \rule{\textwidth}{1pt}
 \textbf{Total Cost:} \hfill Including Shipping/Markup: \$59.61\\
 \pagebreak
 
 \section{Code}
 \begin{lstlisting}
-
 '''
-Created on Mar 8, 2015
+Created on Mar 10, 2015
 
 @author: Henry Hinton, Pavle Jeremic, Eduardo Hirata
 '''
-#import required modules
+
 from sys import argv
 import numpy
 import scipy
 import matplotlib.pyplot as plt
-#arrays to store values
-time = []
-vol = []
-#read filename from terminal input
+
 filename = argv[1]
-#open file
-txt = open(filename, 'r')
-print('Using file: ' + filename) #verify filename with user
-for line in txt: #skip commented lines in data file
-    if line.startswith('#'):
-        continue
-    fields = map(float, line.split()) #create tuple with time and values
-    if len(fields) >= 2: #verify tuple
-        time.append(fields[0])
-        vol.append(fields[1])
-print("Using %d values" % len(time)) #show number of data points
+raw = []
+time, vdiff = [], []
+# print('Using file: ' + filename)
 
-for i in range (0, len(time)):
-    print("%.7f  %.7f" % (time[i], vol[i])) #print data to terminal
-plt.plot(time, vol) #use matplotlib to plot data
-
-plt.show() #open window with plot
-txt.close() #close the file safely
+with open(filename, 'r') as txt: #open file
+    for line in txt:
+        if line.startswith('#'): #skip commented lines in header
+            continue
+        raw.append(line.rstrip('\n')) #strip newline delimiter
+print("Using %d points." % len(raw)) #verify data
+for index, x in enumerate(raw):
+    raws = x.split('\t') #split raw lines into time & vdif values
+    print("%d, %s, %s" % (index, raws[0], raws[1])) #print values to console
+    time.append(float(raws[0]))
+    vdiff.append(float(raws[1]))
+    
+plt.plot(time, vdiff) #plot points
+plt.show() #display points
 \end{lstlisting}
 \pagebreak
-\par The above code is our current graphing module that has successfully converted the example data provided by Dr. Karplus \cite{karptalk} and generated a waveform (below). In the next two days we will implement the bandpass and notch filters from scipy. Immediately afterwards we plan on completing the Diagnostic Module and a GUI.
+\par The above code is our current graphing module that has successfully converted the example data \cite{karcode} provided by Dr. Karplus \cite{karptalk} and generated a waveform (below). In the next two days we will implement the bandpass and notch filters from scipy. Immediately afterwards we plan on completing the Diagnostic Module and a GUI.
 
 \begin{figure}[htb!]
 \centering
@@ -211,7 +207,7 @@ txt.close() #close the file safely
 \end{figure}
 
 \pagebreak
-\begin{thebibliography}{14}
+\begin{thebibliography}{9}
 
 \bibitem{ecgpos}
 "Electrocardiography Devices." Electrocardiography Devices. N.p., n.d. Web. 24 Feb. 2015. \\ \url{http://rtboardreview.com/public/equipment_room/ats_ecg.htm}
@@ -232,14 +228,15 @@ Personal communication with Dr. Karplus regarding typical EKG sensor output.
 Data sheet for Texas Instruments INA122PA-ND instrumentation amplifier. Web. March 1, 2015.\\ \url{http://www.ti.com/lit/ds/symlink/ina122.pdf}
 
 \bibitem{SciPython}
-Eric Jones and Travis Oliphant and Pearu Peterson and others. SciPy: Open source scientific tools for Python, 2001-present.March 1, 2015
-\url{http://www.scipy.org/"}
+Eric Jones and Travis Oliphant and Pearu Peterson and others. SciPy: Open source scientific tools for Python, 2001-present.March 1, 2015 \\ \url{http://www.scipy.org/"}
 
 \bibitem{matplotlib}
 Hunter, J. D. Matplotlib: A 2D graphics enviroment.
 Computing in Science \& Engineering vol.9 \#3 pg. 90-95
-publisher: IEEE Computer Society, 2007. \url{http://matplotlib.org/index.html}
+publisher: IEEE Computer Society, 2007. \\ \url{http://matplotlib.org/index.html}
 
+\bibitem{karcode}
+Demo code and data given by Dr. Karplus. \url{https://users.soe.ucsc.edu/~karplus/bme88a/w15/EKG_demo/}
 
 
 \end{thebibliography}
