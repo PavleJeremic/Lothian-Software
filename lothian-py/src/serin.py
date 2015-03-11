@@ -1,5 +1,10 @@
 '''
+<<<<<<< HEAD
 Created on Mar 8, 2015
+=======
+Created on Mar 10, 2015
+
+>>>>>>> origin/master
 @author: Henry Hinton, Pavle Jeremic, Eduardo Hirata
 '''
 

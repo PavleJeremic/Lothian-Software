@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  9 MAR 2015 12:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  10 MAR 2015 02:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -389,19 +389,19 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<ecg.jpg, id=1, 250.9375pt x 253.94875pt>
-File: ecg.jpg Graphic file (type jpg)
- <use ecg.jpg>
-Package pdftex.def Info: ecg.jpg used on input line 59.
+<images/ecg.jpg, id=1, 250.9375pt x 253.94875pt>
+File: images/ecg.jpg Graphic file (type jpg)
+ <use images/ecg.jpg>
+Package pdftex.def Info: images/ecg.jpg used on input line 59.
 (pdftex.def)             Requested size: 171.99922pt x 174.07008pt.
  [1
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ecg.j
-pg>]
-<PQRST.jpg, id=12, 777.90625pt x 765.86125pt>
-File: PQRST.jpg Graphic file (type jpg)
- <use PQRST.jpg>
-Package pdftex.def Info: PQRST.jpg used on input line 68.
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./image
+s/ecg.jpg>] <images/PQRST.jpg, id=12, 777.90625pt x 765.86125pt>
+File: images/PQRST.jpg Graphic file (type jpg)
+
+<use images/PQRST.jpg>
+Package pdftex.def Info: images/PQRST.jpg used on input line 68.
 (pdftex.def)             Requested size: 171.99922pt x 169.33139pt.
 
 Underfull \hbox (badness 1052) in paragraph at lines 70--70
@@ -418,49 +418,51 @@ Underfull \hbox (badness 1616) in paragraph at lines 70--70
 \OT1/cmr/m/n/10.95 the heart cham-bers. [[]] Im-age
  []
 
-[2 <./PQRST.jpg>]
+[2 <./images/PQRST.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 82.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 82.
-[3] [4] <blockdiagnew.png, id=29, 694.84593pt x 206.27063pt>
-File: blockdiagnew.png Graphic file (type png)
+ [3] [4]
+<images/blockdiagnew.png, id=29, 694.84593pt x 206.27063pt>
+File: images/blockdiagnew.png Graphic file (type png)
 
-<use blockdiagnew.png>
-Package pdftex.def Info: blockdiagnew.png used on input line 122.
+<use images/blockdiagnew.png>
+Package pdftex.def Info: images/blockdiagnew.png used on input line 122.
 (pdftex.def)             Requested size: 430.00462pt x 127.65039pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 132--139
 
  []
 
-[5 <./blockdiagnew.png>]
+[5 <./images/blockdiagnew.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 145--147
 
  []
 
-[6] [7] <matplotlib1.png, id=42, 638.385pt x 541.02126pt>
-File: matplotlib1.png Graphic file (type png)
+[6] [7] <images/matplotlib1.png, id=42, 638.385pt x 541.02126pt>
+File: images/matplotlib1.png Graphic file (type png)
 
-<use matplotlib1.png>
-Package pdftex.def Info: matplotlib1.png used on input line 210.
+<use images/matplotlib1.png>
+Package pdftex.def Info: images/matplotlib1.png used on input line 206.
 (pdftex.def)             Requested size: 430.00462pt x 364.42235pt.
- [8 <./matplotlib1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
+ [8 <./images/matplotlib1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
 \OT1/cmr/m/n/10.95 http : / / en . wikipedia . org / wiki / Electrocardiography
  # mediaviewer / File : QRS[]complex .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--224
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 \OT1/cmr/m/n/10.95 http : / / www . southsudanmedicaljournal . com / archive / 
 may-[]2010 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--224
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 \OT1/cmr/m/n/10.95 how-[]to-[]read-[]an-[]electrocardiogram-[]ecg . -[]part-[]o
 ne-[]basic-[]principles-[]of-[]the-[]ecg .
  []
@@ -472,10 +474,10 @@ ne-[]basic-[]principles-[]of-[]the-[]ecg .
 ### semi simple group (level 1) entered at line 52 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 5483 strings out of 493117
- 79161 string characters out of 6135433
- 199232 words of memory out of 5000000
- 8845 multiletter control sequences out of 15000+600000
+ 5488 strings out of 493117
+ 79317 string characters out of 6135433
+ 193245 words of memory out of 5000000
+ 8849 multiletter control sequences out of 15000+600000
  11559 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,6n,40p,1286b,1252s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -488,13 +490,14 @@ mr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
 .pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
 b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "Preliminary Tex File 2015_3_9 CODE ADDED.pdf" (9 pages, 2926
-73 bytes).
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on "Preliminary Tex File 2015_3_9 CODE ADDED.pdf" (9 pages, 2994
+74 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
