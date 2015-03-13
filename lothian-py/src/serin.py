@@ -3,6 +3,8 @@ Created on Mar 8, 2015
 
 @author: Henry Hinton, Pavle Jeremic, Eduardo Hirata
 '''
+from __future__ import print_function, division
+
 from sys import argv
 import numpy as np
 import scipy
@@ -30,7 +32,7 @@ for index, x in enumerate(raw):
 	
 # compute the sampling frequency (in Hz) 
 # from the number of samples and the total duration
-sampling_frequency= (len(time)-1)/ (time[-1] - time[0])
+sampling_frequency= (len(time)-1)/ (time[-1] - time[0])  #Cite Karplus's Code
 
 print("# sampling_frequency set to {:.6g} Hz".format(sampling_frequency))
 
@@ -57,11 +59,12 @@ if mains_freq<high_band_cutoff:
     notch_b,notch_a = scipy.signal.iirfilter(5,Wn=[mains_over_Nyquist*0.95, mains_over_Nyquist*1.05],btype="bandstop",ftype='bessel')
 	
     filtered = scipy.signal.filtfilt(notch_b,notch_a,filtered)
+	
 print("# followed by notch {:.6g}Hz -- {:.6g}Hz".format(mains_freq*0.95, mains_freq*1.05))
-    
-#np.array([zip(t,n) for t,n in zip(time,filtered)])
+
 for t,n in izip(times,filtered):
-print("{:.7f}\t{:.6f}".format(t,n))
-plt.plot() (time, vdiff)
+	print("{:.7f}\t{:.6f}".format(t,n))
+	
+plt.plot() (t,n)
 plt.show()
 txt.close()
