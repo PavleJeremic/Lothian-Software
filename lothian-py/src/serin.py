@@ -3,8 +3,6 @@ Created on Mar 13, 2015
 
 @author: Henry Hinton, Pavle Jeremic, Eduardo Hirata
 '''
-from __future__ import print_function, division
-
 from sys import argv
 import numpy as np
 import scipy
@@ -18,6 +16,7 @@ except ImportError: # will be 3.x series
 
 # variables we want
 filename = argv[1]
+
 raw = []
 time, vdiff = [], []
 mains_freq = 60.0  # Hz  (Use 50Hz in Europe)
@@ -42,18 +41,14 @@ numpoints = len(time)
 
 # compute the sampling frequency (in Hz) 
 # from the number of samples and the total duration
-<<<<<<< HEAD
-sampling_frequency= (len(time)-1)/ (time[-1] - time[0])  #Cite Karplus's Code
-=======
 sampling_frequency = (numpoints - 1) / (time[-1] - time[0])  # read and write speed
 nyquist = (0.5 * sampling_frequency)
->>>>>>> origin/master
 
 
-print("# sampling_frequency set to %.6g Hz" % sampling_frequency)
+print("# Sampling frequency set to %.6g Hz" % sampling_frequency)
 
 # set the cutoff frequencies (but stay below nyquist frequency (sampling_fequency/2))
-low_band_cutoff = 0.3  # Hz
+low_band_cutoff = 0.8  # Hz
 high_band_cutoff = min(100.0, 0.49 * sampling_frequency)
 
 # Scale cutoff frequencies in the manner needed by the iirfilter routine
@@ -65,37 +60,25 @@ high_over_nyquist = high_band_cutoff / nyquist
 bess_b, bess_a = scipy.signal.iirfilter(5, Wn=[low_over_nyquist, high_over_nyquist], btype="bandpass", ftype='bessel')  # initial frequency filtering
 filtered = scipy.signal.filtfilt(bess_b, bess_a, vdiff)  # filter error from bessel filter (non-ideal)
 
-print("# Bessel bandpass filtered to {:.6g}Hz to {:.6g}Hz".format(low_band_cutoff, high_band_cutoff))
+print("# Bessel bandpass filtered to %.6g Hz to %.6g Hz" % (low_band_cutoff, high_band_cutoff))
 
 if mains_freq < high_band_cutoff:
     # mains frequency is in the pass band, 
     # so filter with a notch filter to remove it.
-<<<<<<< HEAD
-    mains_over_Nyquist = mains_freq/(0.5*sampling_frequency)
-
-    notch_b,notch_a = scipy.signal.iirfilter(5,Wn=[mains_over_Nyquist*0.95, mains_over_Nyquist*1.05],btype="bandstop",ftype='bessel')
-	
-    filtered = scipy.signal.filtfilt(notch_b,notch_a,filtered)
-	
-print("# followed by notch {:.6g}Hz -- {:.6g}Hz".format(mains_freq*0.95, mains_freq*1.05))
-
-for t,n in izip(times,filtered):
-	print("{:.7f}\t{:.6f}".format(t,n))
-	
-plt.plot() (t,n)
-=======
     mains_over_nyquist = mains_freq / nyquist
     # fifth order function, 5% around mains
     notch_b, notch_a = scipy.signal.iirfilter(5, Wn=[mains_over_nyquist * 0.95, mains_over_nyquist * 1.05], btype="bandstop", ftype='bessel')
     
     # error attentuation
     filtered = scipy.signal.filtfilt(notch_b, notch_a, filtered)
-print("# followed by notch {:.6g}Hz -- {:.6g}Hz".format(mains_freq * 0.95, mains_freq * 1.05))
+print("# Notch filter at: %.6g Hz %.6g Hz" % (mains_freq * 0.95, mains_freq * 1.05))
     
-for t, n in zip(time, filtered):
-    print("%.7f'\t'%.6f" % (t, n))
+for ti, vd in zip(time, filtered):
+    print("%.7f\t%.6f" % (ti, vd))
     
 plt.plot(time, filtered)
->>>>>>> origin/master
+fig = plt.figure(figsize=(20, 5), dpi=100) #adjust size of plot
+
+plt.plot(time, vdiff)
 plt.show()
 txt.close()
