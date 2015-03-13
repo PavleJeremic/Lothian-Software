@@ -3,7 +3,6 @@ Created on Mar 8, 2015
 
 @author: Henry Hinton, Pavle Jeremic, Eduardo Hirata
 '''
-
 from sys import argv
 import numpy as np
 import scipy
@@ -26,11 +25,9 @@ for index, x in enumerate(raw):
     print("%d, %s, %s" % (index, raws[0], raws[1])) #print values to console
     time.append(float(raws[0]))
     vdiff.append(float(raws[1]))
-#Need to convert to Hz From Karplus file   
-sampling_frequency = (len(time))/ (time[-1]- time [0])/ (time[-1]-time[0])
-print("# sampling_frequency set to {:.6g} Hz".format(sampling_frequency))
-
-
+	
+# At this point, we have [time] and [vdiff]
+	
 # compute the sampling frequency (in Hz) 
 # from the number of samples and the total duration
 sampling_frequency= (len(time)-1)/ (time[-1] - time[0])
@@ -47,8 +44,7 @@ high_over_Nyquist = high_band_cutoff/(0.5*sampling_frequency)
 
 # Construct a Bessel bandpass filter.
 # Bessel was chosen to minimize time-domain distortion.
-bess_b,bess_a = scipy.signal.iirfilter(5, 
-Wn=[low_over_Nyquist,high_over_Nyquist],btype="bandpass",ftype='bessel')
+bess_b,bess_a = scipy.signal.iirfilter(5,Wn=[low_over_Nyquist,high_over_Nyquist],btype="bandpass",ftype='bessel')
 filtered = scipy.signal.filtfilt(bess_b,bess_a,vdiff)
 
 print("# Bessel bandpass filtered to {:.6g}Hz to {:.6g}Hz".format(low_band_cutoff, high_band_cutoff))
@@ -63,10 +59,9 @@ if mains_freq<high_band_cutoff:
     filtered = scipy.signal.filtfilt(notch_b,notch_a,filtered)
 print("# followed by notch {:.6g}Hz -- {:.6g}Hz".format(mains_freq*0.95, mains_freq*1.05))
     
-for i in range (0, len(time)):
-    print("%.7f  %.7f" % (time[i], vdiff[i]))
-
-plt.plot(time, vdiff)
-
+#np.array([zip(t,n) for t,n in zip(time,filtered)])
+for t,n in izip(times,filtered):
+print("{:.7f}\t{:.6f}".format(t,n))
+plt.plot() (time, vdiff)
 plt.show()
 txt.close()
